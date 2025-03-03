@@ -5,7 +5,6 @@ import {
   Menu, 
   X, 
   PhoneCall, 
-  Snowflake, 
   Calendar 
 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/useAnimation";
@@ -34,6 +33,14 @@ const Header = () => {
     rootMargin: '0px'
   });
   
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    }
+  };
+  
   return (
     <header 
       ref={elementRef}
@@ -46,20 +53,23 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 text-primary">
-            <Snowflake className="h-6 w-6 animate-pulse-soft" />
-            <span className="text-xl font-bold tracking-tight">CoolAir</span>
+            <img src="/logo2.png" alt="איציק פיתרונות מיזוג" className="h-12 md:h-14" />
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            {["שירותים", "אודות", "המלצות", "צור קשר"].map((item, index) => (
-              <a
+            {[
+              { name: "שירותים", id: "services" },
+              { name: "צור קשר", id: "צור קשר" },
+              { name: "הזמן שירות", id: "booking" }
+            ].map((item, index) => (
+              <button
                 key={index}
-                href={`#${item}`}
+                onClick={() => scrollToSection(item.id)}
                 className="text-foreground/80 hover:text-primary transition-colors relative group"
               >
-                <span>{item}</span>
+                <span>{item.name}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </button>
             ))}
           </nav>
           
@@ -67,8 +77,8 @@ const Header = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              className="border-primary text-primary hover:bg-primary hover:text-white transition-colors" 
-              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border-primary text-primary hover:bg-primary hover:text-white transition-colors border" 
+              onClick={() => scrollToSection('booking')}
             >
               <Calendar className="mr-2 h-4 w-4" />
               הזמן שירות
@@ -76,10 +86,10 @@ const Header = () => {
             
             <Button 
               className="animate-pulse-soft btn-primary-effect"
-              onClick={() => window.location.href = 'tel:+972123456789'}
+              onClick={() => window.location.href = 'tel:0502290880'}
             >
               <PhoneCall className="mr-2 h-4 w-4" />
-              התקשר עכשיו
+              050-2290880
             </Button>
           </div>
           
@@ -107,25 +117,25 @@ const Header = () => {
         } md:hidden flex flex-col pt-20`}
       >
         <div className="container mx-auto px-4 py-8 flex flex-col items-center space-y-6">
-          {["שירותים", "אודות", "המלצות", "צור קשר"].map((item, index) => (
-            <a
+          {[
+            { name: "שירותים", id: "services" },
+            { name: "צור קשר", id: "צור קשר" },
+            { name: "הזמן שירות", id: "booking" }
+          ].map((item, index) => (
+            <button
               key={index}
-              href={`#${item}`}
-              onClick={() => setIsOpen(false)}
+              onClick={() => scrollToSection(item.id)}
               className="text-xl font-medium text-foreground hover:text-primary transition-colors"
             >
-              {item}
-            </a>
+              {item.name}
+            </button>
           ))}
           
           <div className="pt-6 flex flex-col space-y-4 w-full max-w-xs">
             <Button 
               variant="outline" 
-              className="w-full border-primary text-primary hover:bg-primary hover:text-white"
-              onClick={() => {
-                setIsOpen(false);
-                document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              className="w-full border-primary text-primary hover:bg-primary hover:text-white border"
+              onClick={() => scrollToSection('booking')}
             >
               <Calendar className="mr-2 h-4 w-4" />
               הזמן שירות
@@ -133,10 +143,10 @@ const Header = () => {
             
             <Button 
               className="w-full btn-primary-effect"
-              onClick={() => window.location.href = 'tel:+972123456789'}
+              onClick={() => window.location.href = 'tel:0502290880'}
             >
               <PhoneCall className="mr-2 h-4 w-4" />
-              התקשר עכשיו
+              050-2290880
             </Button>
           </div>
         </div>

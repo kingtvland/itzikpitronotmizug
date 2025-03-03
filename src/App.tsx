@@ -8,7 +8,7 @@ import ServiceCard from './components/ServiceCard';
 import BookingForm from './components/BookingForm';
 import ContactInfo from './components/ContactInfo';
 import Footer from './components/Footer';
-import { Wrench, Fan, Zap, Thermometer, Snowflake, ExternalLink } from 'lucide-react';
+import { Wrench, Fan, Thermometer, Snowflake } from 'lucide-react';
 
 function App() {
   const services = [
@@ -100,7 +100,7 @@ function App() {
               </p>
             </div>
             
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto border border-border rounded-xl p-6 shadow-md">
               <BookingForm />
             </div>
           </div>
@@ -120,7 +120,7 @@ function App() {
 
 export default App;
 
-// Missing Calendar component import
+// Calendar component
 function Calendar(props: { className: string }) {
   return <span {...props} />;
 }

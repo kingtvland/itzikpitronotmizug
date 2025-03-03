@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useIntersectionObserver, useHoverEffect } from "@/hooks/useAnimation";
 
 interface ServiceCardProps {
@@ -33,10 +33,10 @@ const ServiceCard = ({
       ref={elementRef}
       className={`group rounded-xl overflow-hidden transition-all duration-500 ${
         isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      } border border-border hover:border-primary`}
       {...hoverProps}
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 overflow-hidden border-b border-border">
         <img
           src={image}
           alt={title}
@@ -46,16 +46,16 @@ const ServiceCard = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         
-        <div className="absolute top-4 right-4 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-glass">
+        <div className="absolute top-4 right-4 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-glass border border-white/30">
           {icon}
         </div>
         
         <div className="absolute bottom-0 left-0 right-0 p-4">
-          <h3 className="text-xl font-bold text-white">{title}</h3>
+          <h3 className="text-xl font-bold text-white drop-shadow-md">{title}</h3>
         </div>
       </div>
       
-      <div className="p-6 bg-background border border-t-0 border-border rounded-b-xl">
+      <div className="p-6 bg-background rounded-b-xl">
         <p className="text-muted-foreground mb-4">{description}</p>
         
         <div className="mb-6">
@@ -78,10 +78,10 @@ const ServiceCard = ({
           
           <Button 
             onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary-effect"
+            className="btn-primary-effect border border-transparent hover:border-white"
           >
             הזמן עכשיו
-            <ChevronRight className="ml-2 h-4 w-4" />
+            <ChevronRight className="mr-2 h-4 w-4" />
           </Button>
         </div>
       </div>
