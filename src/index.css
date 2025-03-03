@@ -16,6 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 40% 15%;
 
+    /* Updated to a warmer blue */
     --primary: 208 90% 54%;
     --primary-foreground: 0 0% 100%;
 
@@ -25,7 +26,8 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 194 95% 50%;
+    /* Updated to a warmer accent color */
+    --accent: 25 95% 65%;
     --accent-foreground: 210 40% 15%;
 
     --destructive: 0 84.2% 60.2%;
@@ -48,6 +50,7 @@
     --popover: 210 40% 12%;
     --popover-foreground: 0 0% 95%;
 
+    /* Adjusted for dark mode */
     --primary: 208 90% 54%;
     --primary-foreground: 0 0% 100%;
 
@@ -57,7 +60,8 @@
     --muted: 210 40% 20%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 194 95% 50%;
+    /* Warmer accent for dark mode */
+    --accent: 25 95% 55%;
     --accent-foreground: 210 40% 15%;
 
     --destructive: 0 62.8% 30.6%;
@@ -126,6 +130,19 @@
   .staggered-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
   .staggered-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
   .staggered-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+  
+  /* New warm-themed components */
+  .warm-card {
+    @apply bg-gradient-to-br from-[#FEF7CD] to-[#FDE1D3] shadow-md rounded-lg p-4;
+  }
+  
+  .warm-button {
+    @apply bg-[#F97316] hover:bg-[#F97316]/90 text-white transition-colors;
+  }
+  
+  .warm-glow {
+    text-shadow: 0 0 15px rgba(249, 115, 22, 0.5), 0 0 10px rgba(249, 115, 22, 0.3);
+  }
 }
 
 /* Custom scrollbar */
