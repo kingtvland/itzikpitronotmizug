@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import {
   ThermometerSun,
   Wind,
@@ -20,15 +19,13 @@ const Hero = () => {
   
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    rootMargin: '0px'
   });
   
   const { displayedText } = useAnimatedText(
     "שירות מקצועי ואמין - כל פתרונות המיזוג שלך במקום אחד",
     mounted ? 30 : 0
   );
-  
-  // Use framer motion for elements with a fallback for SSR
-  const MotionWrapper = mounted ? motion.div : "div";
   
   const benefits = [
     {
@@ -95,12 +92,14 @@ const Hero = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 max-w-3xl">
               {benefits.map((benefit, index) => (
-                <MotionWrapper
+                <div
                   key={index}
-                  className="glass-card p-4 text-right"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={mounted && isIntersecting ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className={`glass-card p-4 text-right transition-opacity transition-transform duration-500 ${
+                    mounted && isIntersecting 
+                      ? "opacity-100 translate-y-0" 
+                      : "opacity-0 translate-y-4"
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-start gap-3 rtl">
                     <div className="p-2 rounded-full bg-primary/10">
@@ -111,16 +110,18 @@ const Hero = () => {
                       <p className="text-sm text-muted-foreground mt-1">{benefit.description}</p>
                     </div>
                   </div>
-                </MotionWrapper>
+                </div>
               ))}
             </div>
           </div>
           
-          <MotionWrapper
-            className="relative"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={mounted && isIntersecting ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+          <div
+            className={`relative transition-all duration-500 ${
+              mounted && isIntersecting 
+                ? "opacity-100 scale-100" 
+                : "opacity-0 scale-95"
+            }`}
+            style={{ transitionDelay: "300ms" }}
           >
             <div className="relative">
               <div className="absolute -top-5 -left-5 bg-primary/30 w-full h-full rounded-tr-[80px] -z-10" />
@@ -168,7 +169,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </MotionWrapper>
+          </div>
         </div>
       </div>
     </section>

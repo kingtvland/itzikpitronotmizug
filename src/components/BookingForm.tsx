@@ -26,6 +26,7 @@ const BookingForm = () => {
   
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    rootMargin: '0px'
   });
   
   const handleSubmit = (e: React.FormEvent) => {

@@ -31,6 +31,7 @@ const Header = () => {
   
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    rootMargin: '0px'
   });
   
   return (

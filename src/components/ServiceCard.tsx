@@ -23,6 +23,7 @@ const ServiceCard = ({
 }: ServiceCardProps) => {
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    rootMargin: '0px'
   });
   
   const { isHovered, hoverProps } = useHoverEffect();

@@ -15,6 +15,7 @@ import { useIntersectionObserver } from "@/hooks/useAnimation";
 const ContactInfo = () => {
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    rootMargin: '0px'
   });
   
   const contactMethods = [
