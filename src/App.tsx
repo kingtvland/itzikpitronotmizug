@@ -8,7 +8,10 @@ import ServiceCard from './components/ServiceCard';
 import BookingForm from './components/BookingForm';
 import ContactInfo from './components/ContactInfo';
 import Footer from './components/Footer';
-import { Wrench, Fan, Thermometer, Snowflake } from 'lucide-react';
+import CrmSystem from './components/CrmSystem';
+import ShopSection from './components/ShopSection';
+import { Wrench, Fan, Thermometer, Snowflake, ShoppingBag, Clipboard } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function App() {
   const services = [
@@ -87,7 +90,24 @@ function App() {
           </div>
         </section>
         
-        <section id="booking" className="py-20">
+        <section id="shop" className="py-20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center text-center mb-14 space-y-3">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm text-primary">
+                <ShoppingBag className="mr-1 h-3.5 w-3.5" />
+                <span>חנות המזגנים שלנו</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">מזגנים ואביזרים למכירה</h2>
+              <p className="text-muted-foreground max-w-2xl">
+                מגוון רחב של מזגנים מהמותגים המובילים ואביזרים נלווים במחירים אטרקטיביים
+              </p>
+            </div>
+            
+            <ShopSection />
+          </div>
+        </section>
+        
+        <section id="booking" className="py-20 bg-muted/50">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center text-center mb-14 space-y-3">
               <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm text-primary">
@@ -102,6 +122,25 @@ function App() {
             
             <div className="max-w-4xl mx-auto border border-border rounded-xl p-6 shadow-md">
               <BookingForm />
+            </div>
+          </div>
+        </section>
+        
+        <section id="admin" className="py-20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center text-center mb-14 space-y-3">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm text-primary">
+                <Clipboard className="mr-1 h-3.5 w-3.5" />
+                <span>ניהול</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">ניהול הזמנות</h2>
+              <p className="text-muted-foreground max-w-2xl">
+                מערכת CRM לניהול ההזמנות והלקוחות של העסק
+              </p>
+            </div>
+            
+            <div className="max-w-6xl mx-auto">
+              <CrmSystem />
             </div>
           </div>
         </section>
